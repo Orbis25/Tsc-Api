@@ -4,3 +4,7 @@ global using System.Linq.Expressions;
 global using Microsoft.EntityFrameworkCore;
 global using AutoMapper;
 global using AutoMapper.QueryableExtensions;
+global using BussinesLayer.Core.Repositories;
+global using DataLayer.Mappings.Mappers;
+global using DataLayer.Models;
+global using DataLayer.Persistence;

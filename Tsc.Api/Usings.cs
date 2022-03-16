@@ -5,3 +5,7 @@ global using BussinesLayer.Core.Repositories;
 global using DataLayer.Persistence;
 global using Microsoft.EntityFrameworkCore;
 global using Tsc.Api.Configurations;
+global using BusinessLayer.Services;
+global using DataLayer.Mappings.Mappers;
+global using Tsc.Api.Controllers.Core;
+global using DataLayer.Mappings.Profiles;

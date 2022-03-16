@@ -10,6 +10,8 @@ builder.Services.AddSwaggerGen();
 
 //configurations
 builder.Services.AddDataBaseConfiguration(builder.Configuration);
+builder.Services.AddAutomapperConfiguration();
+builder.Services.AddServices();
 
 var app = builder.Build();
 

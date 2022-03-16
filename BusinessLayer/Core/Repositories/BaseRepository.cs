@@ -8,8 +8,8 @@
     /// <typeparam name="TInputModel">Represent the class children of BaseInputModel </typeparam>
     /// <typeparam name="TEditModel">Represent the class children of BaseEditModel</typeparam>
     /// <typeparam name="TDtoModel">Represent the class children of BaseDtoModel</typeparam>
-    public abstract class BaseRepository<TContext,TEntity, TInputModel,TEditModel, TDtoModel> :
-        IBaseRepository<TInputModel,TEditModel, TDtoModel>
+    public abstract class BaseRepository<TContext, TEntity, TInputModel, TEditModel, TDtoModel> :
+        IBaseRepository<TInputModel, TEditModel, TDtoModel>
         where TContext : DbContext
         where TEntity : BaseModel
         where TInputModel : BaseInputModel
@@ -39,7 +39,7 @@
             }
         }
 
-        public virtual async Task<TDtoModel> Create(TInputModel model,CancellationToken cancellationToken = default)
+        public virtual async Task<TDtoModel> Create(TInputModel model, CancellationToken cancellationToken = default)
         {
             var _model = _mapper.Map<TInputModel, TEntity>(model);
 
@@ -104,6 +104,13 @@
 
         public virtual async Task<TDtoModel> Update(TEditModel model, CancellationToken cancellationToken = default)
         {
+            var entity = await GetById(model.Id, true);
+
+            if (entity == null)
+                return null;
+
+            model.CreatedBy = entity.CreatedBy;
+            model.CreatedAt = entity.CreatedAt;
 
             var _model = _mapper.Map<TEditModel, TEntity>(model);
             _context.Set<TEntity>().Update(_model);
@@ -129,9 +136,9 @@
 
         public virtual async Task<bool> SoftRemove(Guid id, CancellationToken cancellationToken = default)
         {
-            var entity = _mapper.Map<TDtoModel, TEntity>(await GetById(id));
+            var entity = _mapper.Map<TDtoModel, TEntity>(await GetById(id, true));
 
-            if(entity == null)  return false;
+            if (entity == null) return false;
 
             entity.IsDeleted = true;
 
@@ -145,7 +152,7 @@
 
         public virtual async Task<bool> Remove(Guid id, CancellationToken cancellationToken = default)
         {
-            var entity = _mapper.Map<TDtoModel, TEntity>(await GetById(id));
+            var entity = _mapper.Map<TDtoModel, TEntity>(await GetById(id, true));
 
             if (entity == null) return false;
 
