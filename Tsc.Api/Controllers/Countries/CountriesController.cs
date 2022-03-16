@@ -1,6 +1,6 @@
 ﻿namespace Tsc.Api.Controllers.Countries
 {
-    [Route("api/[controller]")]
+    [Route("api/countries")]
     [ApiController]
     public class CountriesController : CoreController<ICountryService, CountryMapper, CountryInputMapper, CountryEditMapper>
     {

@@ -12,5 +12,14 @@
 
         public Guid CountryId { get; set; }
         public Country Country { get; set; }
+
+        public static List<string> OrderByOptions
+        {
+            get => new()
+            {
+                nameof(Code),
+                nameof(Name),
+            };
+        }
     }
 }
