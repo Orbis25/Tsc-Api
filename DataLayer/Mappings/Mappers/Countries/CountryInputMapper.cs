@@ -1,6 +1,6 @@
 ﻿namespace DataLayer.Mappings.Mappers
 {
-    public class EditCountryMapper : BaseEditModel
+    public class CountryInputMapper : BaseInputModel
     {
         [Required]
         [MaxLength(100)]

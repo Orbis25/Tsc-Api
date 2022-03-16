@@ -30,6 +30,7 @@ namespace Tsc.Api.Configurations
         public static void AddServices(this IServiceCollection services)
         {
             services.AddScoped<ICountryService, CountryService>();
+            services.AddScoped<IStateService, StateService>();
         }
     }
 }
