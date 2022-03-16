@@ -8,7 +8,7 @@ namespace DataLayer.Core
 
 
         [JsonIgnore]
-        public string? CreatedBy { get; set; }
+        public string? CreatedBy { get; set; } = "test"; ///TODO: REMOVE THIS
 
     }
 }

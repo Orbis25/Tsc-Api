@@ -4,9 +4,13 @@
     {
         public CommonProfile()
         {
-            CreateMap<Country, InputCountryMapper>().ReverseMap();
-            CreateMap<Country, EditCountryMapper>().ReverseMap();
+            CreateMap<Country, CountryInputMapper>().ReverseMap();
+            CreateMap<Country, CountryEditMapper>().ReverseMap();
             CreateMap<Country, CountryMapper>().ReverseMap();
+
+            CreateMap<State, StateMapper>().ReverseMap();
+            CreateMap<State, StateInputMapper>().ReverseMap();
+            CreateMap<State, StateEditMapper>().ReverseMap();
         }
     }
 }
