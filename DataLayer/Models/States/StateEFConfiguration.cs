@@ -4,7 +4,8 @@
     {
         public override void ConfigureEF(EntityTypeBuilder<State> builder)
         {
-
+            builder.HasIndex(x => x.Name).HasFilter("IsDeleted = 0").IsUnique();
+            builder.HasIndex(x => x.Code).HasFilter("IsDeleted = 0").IsUnique();
         }
     }
 }

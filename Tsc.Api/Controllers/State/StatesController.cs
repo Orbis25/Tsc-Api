@@ -5,9 +5,11 @@
     public class StatesController : CoreController<IStateService, StateMapper, StateInputMapper, StateEditMapper>
     {
         private readonly ICountryService _countryService;
+        private readonly IStateService _stateService;
         public StatesController(IStateService service, ICountryService countryService) : base(service)
         {
             _countryService = countryService;
+            _stateService = service;
         }
 
         [HttpPost]
@@ -17,6 +19,11 @@
 
             if (!existCountry)
                 return BadRequest($"The country id : {inputModel.CountryId} not was found");
+
+            var entityExist = await _stateService.Exist(x => x.Name == inputModel.Name || x.Code == inputModel.Code, cancellationToken);
+
+            if (entityExist)
+                return BadRequest("The entity exist in the db");
 
             return await base.Create(inputModel, cancellationToken);
         }
