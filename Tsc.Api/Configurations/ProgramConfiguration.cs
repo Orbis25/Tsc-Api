@@ -32,5 +32,17 @@ namespace Tsc.Api.Configurations
             services.AddScoped<ICountryService, CountryService>();
             services.AddScoped<IStateService, StateService>();
         }
+
+        /// <summary>
+        /// cors configuration
+        /// </summary>
+        /// <param name="services"></param>
+        public static void AddCorsConfiguration(this IServiceCollection services)
+        {
+            services.AddCors(opt =>
+            {
+                opt.AddPolicy("AnyOrigin", p => p.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
+            });
+        }
     }
 }
