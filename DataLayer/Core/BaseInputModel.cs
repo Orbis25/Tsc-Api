@@ -6,8 +6,9 @@ namespace DataLayer.Core
         [JsonIgnore]
         public DateTime CreatedAt { get; set; }
 
+
         [JsonIgnore]
-        public string CreatedBy { get; set; }
-    
+        public string? CreatedBy { get; set; }
+
     }
 }
