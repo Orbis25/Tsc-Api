@@ -17,7 +17,14 @@
         /// </summary>
         public string? OrderBy { get; set; } = null;
 
+        /// <summary>
+        /// flag order decs or asc
+        /// </summary>
         public bool OrderByDesc { get; set; }
+
+        /// <summary>
+        /// param to filter
+        /// </summary>
         public string? Query { get; set; }
 
         public static int GetQyt(int qyt)
