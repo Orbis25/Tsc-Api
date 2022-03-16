@@ -23,7 +23,6 @@
         /// <returns>A PaginationResult<TDtoModel> </returns>
         Task<PaginationResult<TDtoModel>> GetPaginatedList(Paginate paginate,
             Expression<Func<TDtoModel, bool>> expression = null,
-               bool orderDesc = true,
             Expression<Func<TDtoModel, object>> ordered = null,
             CancellationToken cancellationToken = default,
             params Expression<Func<TDtoModel, object>>[] includes);
