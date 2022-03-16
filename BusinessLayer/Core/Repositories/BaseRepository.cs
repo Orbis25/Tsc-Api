@@ -86,16 +86,13 @@ namespace BussinesLayer.Core.Repositories
 
             results = results.Skip((paginate.Page - 1) * paginate.Qyt).Take(paginate.Qyt);
 
-            IEnumerable<string> orderOptions = typeof(TDtoModel).GetProperties().Select(x => x.Name);
-
             return new PaginationResult<TDtoModel>
             {
                 ActualPage = paginate.Page,
                 Qyt = paginate.Qyt,
                 PageTotal = pages,
                 Total = total,
-                Results = await results.AsNoTracking().ToListAsync(cancellationToken),
-                OrderOptions = orderOptions
+                Results = await results.AsNoTracking().ToListAsync(cancellationToken)
             };
 
         }

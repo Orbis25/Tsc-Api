@@ -1,6 +1,6 @@
 ﻿namespace Tsc.Api.Controllers.State
 {
-    [Route("api/[controller]")]
+    [Route("api/states")]
     [ApiController]
     public class StatesController : CoreController<IStateService, StateMapper, StateInputMapper, StateEditMapper>
     {
@@ -26,6 +26,12 @@
                 return BadRequest("The entity exist in the db");
 
             return await base.Create(inputModel, cancellationToken);
+        }
+
+        [HttpGet("country/{id:guid}")]
+        public async Task<IActionResult> Get(Guid id, [FromQuery] Paginate paginate, CancellationToken cancellationToken = default)
+        {
+            return Ok(await _stateService.GetPaginatedList(paginate, x => x.CountryId == id, cancellationToken: cancellationToken));
         }
     }
 }

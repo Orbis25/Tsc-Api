@@ -7,6 +7,5 @@
         public string Name { get; set; }
 
         public Guid CountryId { get; set; }
-        public CountryMapper Country { get; set; }
     }
 }
