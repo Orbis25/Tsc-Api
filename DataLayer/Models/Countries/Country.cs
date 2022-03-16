@@ -20,5 +20,19 @@
 
         public ICollection<State> States { get; set; }
 
+        public static List<string> OrderByOptions
+        {
+            get => new()
+            {
+                nameof(Name),
+                nameof(Alpha2Code),
+                nameof(Alpha3Code),
+                nameof(Id),
+                nameof(CreatedAt),
+                nameof(CreatedBy),
+                nameof(NumberCode)
+            };
+        }
+
     }
 }

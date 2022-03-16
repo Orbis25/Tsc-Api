@@ -1,4 +1,6 @@
-﻿namespace BussinesLayer.Core.Repositories
+﻿using System.Reflection;
+
+namespace BussinesLayer.Core.Repositories
 {
     /// <summary>
     /// Permit create the base logic of services
@@ -63,9 +65,10 @@
             ///Order elements desc or asc
             if (ordered != null && orderDesc) results = results.OrderByDescending(ordered);
 
-            if (!orderDesc && ordered != null) results = results.OrderBy(ordered);
+            else if (!orderDesc && ordered != null) results = results.OrderBy(ordered);
 
-            if (orderDesc) results = results.OrderByDescending(x => x.CreatedAt);
+            else if (orderDesc) results = results.OrderByDescending(x => x.CreatedAt);
+            
             else results = results.OrderBy(x => x.CreatedAt);
 
             return results;
@@ -73,16 +76,17 @@
 
         public virtual async Task<PaginationResult<TDtoModel>> GetPaginatedList(Paginate paginate,
             Expression<Func<TDtoModel, bool>> expression = null,
-            bool orderDesc = true,
             Expression<Func<TDtoModel, object>> ordered = null,
             CancellationToken cancellationToken = default,
             params Expression<Func<TDtoModel, object>>[] includes)
         {
-            var results = GetAll(expression, orderDesc, ordered, includes);
+            var results = GetAll(expression, paginate.OrderByDesc, ordered, includes);
             var total = results.Count();
             var pages = total / Paginate.GetQyt(paginate.Qyt);
 
             results = results.Skip((paginate.Page - 1) * paginate.Qyt).Take(paginate.Qyt);
+
+            IEnumerable<string> orderOptions = typeof(TDtoModel).GetProperties().Select(x => x.Name);
 
             return new PaginationResult<TDtoModel>
             {
@@ -90,7 +94,8 @@
                 Qyt = paginate.Qyt,
                 PageTotal = pages,
                 Total = total,
-                Results = await results.AsNoTracking().ToListAsync(cancellationToken)
+                Results = await results.AsNoTracking().ToListAsync(cancellationToken),
+                OrderOptions = orderOptions
             };
 
         }
