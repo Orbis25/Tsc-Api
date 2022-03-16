@@ -18,7 +18,7 @@
         [StringLength(maximumLength: 3, MinimumLength = 3)]
         public string NumberCode { get; set; }
 
-        public ICollection<State> States { get; set; }
+        public List<State> States { get; set; }
 
         public static List<string> OrderByOptions
         {

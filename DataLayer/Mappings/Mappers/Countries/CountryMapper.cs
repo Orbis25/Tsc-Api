@@ -10,6 +10,6 @@
 
         public string NumberCode { get; set; }
 
-        public ICollection<StateMapper> States { get; set; }
+        public List<StateMapper> States { get; set; }
     }
 }
