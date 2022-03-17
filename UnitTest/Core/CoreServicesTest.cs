@@ -1,6 +1,6 @@
 ﻿namespace UnitTest.Core
 {
-    public abstract class CoreTest<TContext, TEntity, TInput,TEdit, TEntityVM>
+    public abstract class CoreServicesTest<TContext, TEntity, TInput,TEdit, TEntityVM>
         where TEntity : BaseModel, new()
         where TInput : BaseInputModel
         where TEntityVM : BaseDtoModel
