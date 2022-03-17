@@ -9,3 +9,4 @@ global using BusinessLayer.Services;
 global using DataLayer.Mappings.Mappers;
 global using Tsc.Api.Controllers.Core;
 global using DataLayer.Mappings.Profiles;
+global using System.Reflection;

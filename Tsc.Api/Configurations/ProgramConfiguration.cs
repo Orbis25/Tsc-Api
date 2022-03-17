@@ -1,6 +1,4 @@
-﻿
-
-namespace Tsc.Api.Configurations
+﻿namespace Tsc.Api.Configurations
 {
     public static class ProgramConfiguration
     {
@@ -42,6 +40,15 @@ namespace Tsc.Api.Configurations
             services.AddCors(opt =>
             {
                 opt.AddPolicy("AnyOrigin", p => p.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
+            });
+        }
+
+        public static void AddSwaggerConfiguration(this IServiceCollection services)
+        {
+            services.AddSwaggerGen(c =>
+            {
+                var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
             });
         }
     }
