@@ -26,11 +26,5 @@
         /// param to filter
         /// </summary>
         public string? Query { get; set; }
-
-        public static int GetQyt(int qyt)
-        {
-            return qyt == 0 ? 10 : qyt;
-        }
-
     }
 }

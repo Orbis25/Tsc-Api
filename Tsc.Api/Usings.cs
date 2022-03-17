@@ -15,3 +15,4 @@ global using System.Reflection;
 global using System.Text;
 global using Tsc.Api.Configurations;
 global using Tsc.Api.Controllers.Core;
+global using BusinessLayer.Seeds;
