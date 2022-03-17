@@ -10,6 +10,5 @@
 
         public string NumberCode { get; set; }
 
-        public List<StateMapper> States { get; set; }
     }
 }

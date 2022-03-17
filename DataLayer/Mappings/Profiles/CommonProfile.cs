@@ -11,6 +11,10 @@
             CreateMap<State, StateMapper>().ReverseMap();
             CreateMap<State, StateInputMapper>().ReverseMap();
             CreateMap<State, StateEditMapper>().ReverseMap();
+
+            CreateMap<Country, CountrySeed>().ReverseMap();
+            CreateMap<State, StateSeed>().ReverseMap();
+
         }
     }
 }
