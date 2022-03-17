@@ -10,10 +10,12 @@ builder.Services.AddSwaggerGen();
 //configurations
 builder.Services.AddDataBaseConfiguration(builder.Configuration);
 builder.Services.AddAutomapperConfiguration();
+builder.Services.AddHttpContextAccessor();
 builder.Services.AddServices();
 builder.Services.AddSwaggerConfiguration();
 builder.Services.AddConfigurations(builder.Configuration);
 builder.Services.AddJwtConfiguration(builder.Configuration);
+
 
 var app = builder.Build();
 

@@ -4,9 +4,9 @@
     {
         public Guid Id { get; set; }
 
-        public DateTime CreatedAt { get; set; } = DateTime.Now;
+        public DateTime CreatedAt { get; set; }
 
-        public DateTime? UpdateAt { get; set; } = DateTime.Now;
+        public DateTime? UpdateAt { get; set; }
 
         [NotMapped]
         public string CreatedAtStr => CreatedAt.ToString("dd/MM/yyyy hh:mm:ss");

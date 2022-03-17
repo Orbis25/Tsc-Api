@@ -1,6 +1,4 @@
-﻿using Microsoft.OpenApi.Models;
-
-namespace Tsc.Api.Configurations
+﻿namespace Tsc.Api.Configurations
 {
     public static class ProgramConfiguration
     {
@@ -29,6 +27,7 @@ namespace Tsc.Api.Configurations
         /// <param name="services">IServiceCollection</param>
         public static void AddServices(this IServiceCollection services)
         {
+            services.AddScoped<IApplicationContext, ApplicationContext>();
             services.AddScoped<ICountryService, CountryService>();
             services.AddScoped<IStateService, StateService>();
             services.AddScoped<IAuthService, AuthService>();
