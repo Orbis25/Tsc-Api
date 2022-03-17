@@ -1,5 +1,4 @@
-﻿
-namespace Tsc.Api.Controllers.Core
+﻿namespace Tsc.Api.Controllers.Core
 {
     /// <summary>
     /// Controller base for the others controllers
@@ -10,6 +9,7 @@ namespace Tsc.Api.Controllers.Core
     /// <typeparam name="TEditModel">Represent the class children of BaseEditModel</typeparam>
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public abstract class CoreController<TService, TDtoModel, TInputModel, TEditModel> : ControllerBase
         , ICoreController<TInputModel, TEditModel>
         where TInputModel : BaseInputModel

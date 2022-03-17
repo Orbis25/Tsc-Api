@@ -13,6 +13,8 @@ builder.Services.AddDataBaseConfiguration(builder.Configuration);
 builder.Services.AddAutomapperConfiguration();
 builder.Services.AddServices();
 builder.Services.AddSwaggerConfiguration();
+builder.Services.AddConfigurations(builder.Configuration);
+builder.Services.AddJwtConfiguration(builder.Configuration);
 
 var app = builder.Build();
 
@@ -25,6 +27,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseCors("AnyOrigin");
 
+app.UseAuthentication();
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
