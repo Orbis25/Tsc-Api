@@ -87,7 +87,8 @@
         {
             IConfigurationSection section = configuration.GetSection("JwtConfig");
 
-            //for this test not allow a expiration
+            //for this
+            //not allow a expiration
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                options.TokenValidationParameters = new TokenValidationParameters
