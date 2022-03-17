@@ -7,6 +7,10 @@
             IApplicationContext applicationContext) : base(options)
         {
             _applicationContext = applicationContext;
+
+            if (Database.IsRelational() && Database.GetPendingMigrations().Any())
+                Database.Migrate();
+
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
