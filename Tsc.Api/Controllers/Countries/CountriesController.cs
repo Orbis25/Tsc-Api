@@ -10,6 +10,13 @@
             _countryService = service;
         }
 
+        /// <summary>
+        /// add a new
+        /// </summary>
+        /// <param name="inputModel"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        [HttpPost]   
         public override async Task<IActionResult> Create(CountryInputMapper inputModel, CancellationToken cancellationToken = default)
         {
             var existOne = await _countryService.Exist(x => x.Name == inputModel.Name 

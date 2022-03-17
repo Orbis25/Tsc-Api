@@ -4,7 +4,7 @@ namespace Tsc.Api.Controllers.Core
     /// <summary>
     /// Controller base for the others controllers
     /// </summary>
-    /// <typeparam name="TService">The service children fron IBaseRepository<,,,></typeparam>
+    /// <typeparam name="TService">The service children fron IBaseRepository</typeparam>
     /// <typeparam name="TDtoModel">Represent the class children of BaseDtoModel</typeparam>
     /// <typeparam name="TInputModel">Represent the class children of BaseInputModel </typeparam>
     /// <typeparam name="TEditModel">Represent the class children of BaseEditModel</typeparam>
@@ -20,12 +20,19 @@ namespace Tsc.Api.Controllers.Core
         private readonly TService _service;
         protected CoreController(TService service) => _service = service;
 
+       
         [HttpPost]
         public virtual async Task<IActionResult> Create(TInputModel inputModel, CancellationToken cancellationToken = default)
         {
             return Created(nameof(GetById), await _service.Create(inputModel, cancellationToken));
         }
 
+        /// <summary>
+        /// Remove a entity
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         [HttpDelete("{id:guid}")]
         public virtual async Task<IActionResult> Delete(Guid id, CancellationToken cancellationToken = default)
         {
@@ -37,6 +44,12 @@ namespace Tsc.Api.Controllers.Core
             return Ok(result);
         }
 
+        /// <summary>
+        /// Get all entities paginated
+        /// </summary>
+        /// <param name="paginate">Paginated model</param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         [HttpGet]
         public virtual async Task<IActionResult> GetAll([FromQuery] Paginate paginate,
             CancellationToken cancellationToken = default)
@@ -45,6 +58,12 @@ namespace Tsc.Api.Controllers.Core
         }
 
 
+        /// <summary>
+        /// Get a entity
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         [HttpGet("{id:guid}")]
         public virtual async Task<IActionResult> GetById(Guid id,
             CancellationToken cancellationToken = default)
@@ -54,6 +73,12 @@ namespace Tsc.Api.Controllers.Core
             return Ok(response);
         }
 
+        /// <summary>
+        /// Update a entity
+        /// </summary>
+        /// <param name="editModel"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         [HttpPut]
         public virtual async Task<IActionResult> Update(TEditModel editModel,
             CancellationToken cancellationToken = default)

@@ -12,6 +12,12 @@
             _stateService = service;
         }
 
+        /// <summary>
+        /// add a new
+        /// </summary>
+        /// <param name="inputModel"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         [HttpPost]
         public override async Task<IActionResult> Create(StateInputMapper inputModel, CancellationToken cancellationToken = default)
         {
