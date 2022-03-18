@@ -10,3 +10,4 @@ global using System.Text.Json.Serialization;
 global using DataLayer.Mappings.Mappers;
 global using DataLayer.Utils.SeedModels;
 global using DataLayer.Utils.ApplicationContexts;
+global using System.Diagnostics.CodeAnalysis;

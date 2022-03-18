@@ -1,9 +1,4 @@
-﻿using DataLayer.Utils.Paginations;
-using Microsoft.AspNetCore.Mvc;
-using System.Linq.Expressions;
-using Tsc.Api.Controllers.Countries;
-
-namespace UnitTest.Controllers
+﻿namespace UnitTest.Controllers
 {
     public class CountryControllerTest
     {

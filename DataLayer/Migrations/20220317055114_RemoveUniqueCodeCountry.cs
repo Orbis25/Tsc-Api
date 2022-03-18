@@ -4,6 +4,7 @@
 
 namespace DataLayer.Migrations
 {
+    [ExcludeFromCodeCoverage]
     public partial class RemoveUniqueCodeCountry : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)

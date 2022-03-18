@@ -35,11 +35,15 @@
                 return false;
 
             result.IsDeleted = true;
-            result.States.ForEach(state =>
+           
+            if(result.States != null)
             {
-                state.IsDeleted = true;
-            });
-
+                result.States.ForEach(state =>
+                {
+                    state.IsDeleted = true;
+                });
+            }
+          
             _dbContext.Countries.Update(result);
             await CommitAsync(cancellationToken);
 

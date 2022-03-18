@@ -1,5 +1,6 @@
 ﻿namespace Tsc.Api.Configurations
 {
+    [ExcludeFromCodeCoverage]
     public static class ProgramConfiguration
     {
         /// <summary>
