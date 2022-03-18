@@ -18,3 +18,4 @@ global using Tsc.Api.Controllers.Core;
 global using BusinessLayer.Seeds;
 global using DataLayer.Utils.ApplicationContexts;
 global using Microsoft.OpenApi.Models;
+global using System.Diagnostics.CodeAnalysis;
